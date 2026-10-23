@@ -1,0 +1,11 @@
+[18-Apr-2026 20:09:49 America/Fortaleza] PHP Warning:  stream_socket_client(): php_network_getaddresses: getaddrinfo for mail.taccone.com.br failed: Name or service not known in /home2/age18258/public_html/contato.php on line 37
+[18-Apr-2026 20:09:49 America/Fortaleza] PHP Warning:  stream_socket_client(): Unable to connect to ssl://mail.taccone.com.br:465 (php_network_getaddresses: getaddrinfo for mail.taccone.com.br failed: Name or service not known) in /home2/age18258/public_html/contato.php on line 37
+[18-Apr-2026 20:09:49 America/Fortaleza] Erro SMTP TACCONE: Falha na conexão: php_network_getaddresses: getaddrinfo for mail.taccone.com.br failed: Name or service not known (0)
+[18-Apr-2026 20:12:26 America/Fortaleza] Erro SMTP TACCONE: Falha na conexão porta 587: php_network_getaddresses: getaddrinfo for mail.taccone.com.br failed: Name or service not known
+[18-Apr-2026 20:14:33 America/Fortaleza] Erro SMTP TACCONE: Falha na conexão porta 587: php_network_getaddresses: getaddrinfo for mail.taccone.com.br failed: Name or service not known
+[18-Apr-2026 20:24:08 America/Fortaleza] Erro SMTP TACCONE: Senha recusada: 535 5.7.8 Error: authentication failed: UGFzc3dvcmQ6
+
+[18-Apr-2026 20:28:01 America/Fortaleza] Erro SMTP TACCONE: Senha recusada: 535 5.7.8 Error: authentication failed: UGFzc3dvcmQ6
+
+[18-Apr-2026 20:29:32 America/Fortaleza] Erro SMTP TACCONE: AUTH PLAIN falhou: 535 5.7.8 Error: authentication failed: 
+

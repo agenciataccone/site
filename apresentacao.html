@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apresentação da TACCONE®</title>
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body, html {
+            background-color: #000;
+            height: 100%;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* DESKTOP */
+        .desktop-view {
+            display: block;
+            width: 100%;
+            height: calc(100vh - 75px);
+        }
+        .desktop-view iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* MOBILE */
+        .mobile-view {
+            display: none;
+            width: 100%;
+            background: #000;
+        }
+        #pdf-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px 0 80px 0;
+            gap: 8px;
+        }
+        #pdf-container canvas {
+            width: 100% !important;
+            height: auto !important;
+            display: block;
+        }
+
+        /* RODAPÉ UNIFICADO */
+        .footer-links {
+            background-color: #000;
+            padding: 25px 10px;
+            text-align: center;
+            width: 100%;
+            z-index: 999;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 700;
+            display: inline-block;
+            transition: opacity 0.3s;
+        }
+        .footer-links a:hover {
+            opacity: 0.7;
+        }
+
+        /* LOADING */
+        #loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: #000;
+            z-index: 1000;
+        }
+        #loading-bar-track {
+            width: 60%;
+            height: 2px;
+            background: #222;
+        }
+        #loading-bar-fill {
+            height: 100%;
+            width: 0%;
+            background: #990000;
+            box-shadow: 0 0 8px #ff0000;
+            transition: width 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .desktop-view { display: none; }
+            .mobile-view { display: block; }
+            .footer-links {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                border-top: 1px solid #222;
+                padding: 15px 10px;
+                gap: 15px;
+            }
+            .footer-links a { font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="desktop-view">
+        <iframe src="Apresentacao-TACCONE.pdf#toolbar=0&navpanes=0&scrollbar=0"></iframe>
+    </div>
+
+    <div class="mobile-view">
+        <div id="pdf-container">
+            <div id="loading">
+                <div id="loading-bar-track">
+                    <div id="loading-bar-fill"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer-links">
+        <a href="https://taccone.com.br/" target="_blank" rel="noopener noreferrer"><strong>[ VISITAR O SITE ]</strong></a>
+        <a href="https://api.whatsapp.com/send/?phone=5521966449984&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer"><strong>[ CONVERSAR PELO WHATSAPP ]</strong></a>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>
+        if (window.innerWidth <= 768) {
+            pdfjsLib.GlobalWorkerOptions.workerSrc =
+                'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+            const container = document.getElementById('pdf-container');
+            const loading = document.getElementById('loading');
+
+            pdfjsLib.getDocument('Apresentacao-TACCONE.pdf').promise.then(function(pdf) {
+                const fill = document.getElementById('loading-bar-fill');
+                const total = pdf.numPages;
+                let rendered = 0;
+
+                const renderPage = (pageNum) => {
+                    return pdf.getPage(pageNum).then(function(page) {
+                        const dpr = window.devicePixelRatio || 1;
+                        const baseScale = window.innerWidth / page.getViewport({ scale: 1 }).width;
+                        const viewport = page.getViewport({ scale: baseScale * dpr });
+
+                        const canvas = document.createElement('canvas');
+                        canvas.width = viewport.width;
+                        canvas.height = viewport.height;
+                        canvas.style.width = (viewport.width / dpr) + 'px';
+                        canvas.style.height = (viewport.height / dpr) + 'px';
+
+                        container.appendChild(canvas);
+                        return page.render({
+                            canvasContext: canvas.getContext('2d'),
+                            viewport: viewport
+                        }).promise.then(() => {
+                            rendered++;
+                            fill.style.width = (rendered / total * 100) + '%';
+                            if (rendered === total) {
+                                setTimeout(() => loading.remove(), 400);
+                            }
+                        });
+                    });
+                };
+
+                let chain = Promise.resolve();
+                for (let i = 1; i <= pdf.numPages; i++) {
+                    chain = chain.then(renderPage.bind(null, i));
+                }
+
+            }).catch(function() {
+                if(loading) loading.textContent = 'Erro ao carregar a apresentação.';
+            });
+        }
+    </script>
+
+</body>
+</html>

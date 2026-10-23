@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Memorial</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400&family=Great+Vibes&display=swap">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; }
+        body, html {
+            margin: 0; padding: 0;
+            background-color: #e8e8e8;
+            color: #808080;
+            font-family: 'Inter', sans-serif;
+            width: 100%;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        /* Desktop: trava na viewport, sem scroll */
+        @media (min-width: 769px) {
+            body, html {
+                height: 100%;
+                overflow: hidden;
+            }
+        }
+
+        /* Mobile: deixa rolar livremente */
+        @media (max-width: 768px) {
+            body, html {
+                min-height: 100%;
+                overflow-x: hidden;
+                overflow-y: auto;
+            }
+        }
+
+        .memorial-wrapper {
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            width: 100%; max-width: 1200px;
+            text-align: center; position: relative;
+            margin: 0 auto;
+            padding: 20px 0 40px 0;
+        }
+
+        /* Desktop: ocupa exatamente a viewport */
+        @media (min-width: 769px) {
+            .memorial-wrapper {
+                height: 100vh;
+                padding: 10px 0;
+                overflow: hidden;
+            }
+        }
+
+        /* Mobile: altura mínima, pode crescer */
+        @media (max-width: 768px) {
+            .memorial-wrapper {
+                min-height: 100svh;
+            }
+        }
+        .fade-element {
+            opacity: 0;
+            animation: fadeInTotal 2000ms ease forwards 2s;
+            display: flex; flex-direction: column;
+            align-items: center; width: 100%;
+        }
+        @keyframes fadeInTotal { to { opacity: 1; } }
+        .nome-principal {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(60px, 18vw, 150px);
+            color: #7a7a7a; margin: 15px 0 0 0;
+            font-weight: 100; line-height: 0.85;
+        }
+        .subtitulo-memorial {
+            font-size: 14px; letter-spacing: 10px;
+            text-transform: uppercase; margin-top: 5px; color: #999;
+        }
+        .media-container {
+            max-width: 1040px; width: 95%;
+            margin: 10px auto; pointer-events: none;
+        }
+        .media-container img {
+            width: 100%; height: auto; display: block;
+        }
+        .homenagem-box {
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            z-index: 100; height: 80px;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .checkbox-oculto { display: none; }
+        .label-coracao {
+            cursor: pointer; font-size: 60px; font-family: serif;
+            transition: all 0.4s ease; display: inline-block;
+            color: transparent; -webkit-text-stroke: 1px #b3b3b3;
+            -webkit-tap-highlight-color: transparent;
+        }
+        @media (hover: hover) { .label-coracao:hover { transform: scale(1.15); } }
+        .coracao-inicial { animation: pulsoInicial 1s ease-in-out infinite; }
+        .label-coracao.preenchido-cinza {
+            color: #b3b3b3; -webkit-text-stroke: 0px transparent;
+        }
+        .checkbox-oculto:checked + .label-coracao {
+            color: #990000 !important;
+            -webkit-text-stroke: 0px transparent !important;
+            transform: scale(1.1);
+        }
+        @keyframes pulsoInicial {
+            0%, 100% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.15); opacity: 1; }
+        }
+        .titulo-acao { font-size: 13px; letter-spacing: 2px; color: #888; margin-bottom: 15px; }
+        .texto-descricao {
+            max-width: 650px; font-size: 14px; line-height: 1.5;
+            color: #8e8e8e; margin: 25px auto 0 auto; font-weight: 300;
+            padding: 0 24px;
+        }
+        .footer-container {
+            width: 100%; max-width: 400px; margin: 30px auto 0 auto;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            -webkit-tap-highlight-color: transparent;
+            padding: 0 24px;
+        }
+        .linha-divisora { width: 100%; height: 1px; background: rgba(0,0,0,0.06); margin-bottom: 15px; }
+        .link-voltar {
+            font-size: 11px; letter-spacing: 2px; color: #888 !important;
+            text-decoration: none; text-transform: uppercase;
+            display: inline-block; transition: opacity 0.3s ease;
+            -webkit-tap-highlight-color: transparent;
+            padding-bottom: env(safe-area-inset-bottom, 0px);
+        }
+        @media (hover: hover) { .link-voltar:hover { opacity: 0.6; } }
+
+        /* SE 2020 e telas pequenas: reduz imagem, não corta texto */
+        @media (max-height: 680px) {
+            .media-container { max-width: 440px; }
+            .nome-principal { font-size: 56px; margin-top: 8px; }
+            .footer-container { margin-top: 20px; }
+            .texto-descricao { margin-top: 12px; }
+        }
+    </style>
+</head>
+<body oncontextmenu="return false;">
+
+    <div class="memorial-wrapper">
+        
+        <div class="fade-element">
+            <h1 class="nome-principal">Adriana Rocha</h1>
+            <div class="subtitulo-memorial">MEMORIAL</div>
+            <div class="media-container">
+                <img src="maos.webp" alt="Memorial Adriana Rocha">
+            </div>
+        </div>
+
+        <div class="homenagem-box">
+            <input type="checkbox" id="btn-homenagem" class="checkbox-oculto">
+            <label for="btn-homenagem" class="label-coracao coracao-inicial" id="main-heart">
+                ♥&#xFE0E;
+            </label>
+        </div>
+
+        <div class="fade-element">
+            <div class="titulo-acao">PRESTAR HOMENAGEM</div>
+            <p class="texto-descricao">
+                Esse espaço é reservado para homenagear nossa querida sócia, que infelizmente faleceu devido à pandemia da COVID-19 dia 14/04/2021 às 20:20h. 
+                Apesar da dor, acreditamos que alguns laços transcendem as dimensões, assim escolhemos o cubo quadridimensional para representar nossos sentimentos.
+            </p>
+            <div class="footer-container">
+                <div class="linha-divisora"></div>
+                <a href="https://taccone.com.br" class="link-voltar">VOLTAR PARA O SITE DA TACCONE</a>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const heart = document.getElementById('main-heart');
+        const check = document.getElementById('btn-homenagem');
+
+        setTimeout(() => {
+            heart.classList.remove('coracao-inicial');
+            heart.classList.add('preenchido-cinza');
+        }, 2000);
+
+        if (localStorage.getItem('homenagem_adriana') === 'true') {
+            check.checked = true;
+        }
+        check.addEventListener('change', function() {
+            localStorage.setItem('homenagem_adriana', this.checked ? 'true' : 'false');
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && ['c','u','i','s','j'].includes(e.key)) e.preventDefault();
+            if (e.key === 'F12') e.preventDefault();
+        });
+    </script>
+
+</body>
+</html>
