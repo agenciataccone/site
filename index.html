@@ -63,12 +63,22 @@
     @media (min-width:768px) { .br-mobile{display:none !important;} }
     @media (max-width:767px) { .br-desktop{display:none !important;} }
     #contato a { text-decoration:none !important; border-bottom:none !important; }
-    @media (max-width:575px) {
-      .u-section-9 .u-image-4 { margin-top:-45px !important; margin-right:70px !important; margin-left:auto !important; }
-      .u-section-9 .u-image-2 { margin-top:-45px !important; margin-right:0 !important; margin-left:auto !important; }
-    }
     .separador-servico { display:none; }
     .quebra-mobile { display:inline; }
+
+    /* Descrição dos serviços: força a fonte Inter (antes caía em Arial) */
+    .u-section-3 .u-text-2,
+    .u-section-3 .u-text-4,
+    .u-section-3 .u-text-6,
+    .u-section-3 .u-text-8,
+    .u-section-3 .u-text-10,
+    .u-section-3 .u-text-2 *,
+    .u-section-3 .u-text-4 *,
+    .u-section-3 .u-text-6 *,
+    .u-section-3 .u-text-8 *,
+    .u-section-3 .u-text-10 * {
+      font-family: 'Inter', sans-serif !important;
+    }
 
     /* Alinha descrição com o início do título branco (após "/ 01.  ") */
     .u-section-3 .u-text-2,
@@ -85,7 +95,7 @@
       .quebra-mobile { display:none; }
     }
 
-    /* Tablet (991px) — margem lateral de 10px já aplicada pelo index.css */
+    /* Tablet (991px) */
     @media (max-width: 991px) {
       .u-section-3 .u-text-2,
       .u-section-3 .u-text-4,
@@ -96,7 +106,7 @@
       }
     }
 
-    /* Mobile médio (767px) — fonte ainda 2.5rem mas largura menor */
+    /* Mobile médio (767px) */
     @media (max-width: 767px) {
       .u-section-3 .u-text-2,
       .u-section-3 .u-text-4,
@@ -107,7 +117,7 @@
       }
     }
 
-    /* Mobile pequeno (575px) — fonte reduz para 1.5rem, número menor */
+    /* Mobile pequeno (575px) */
     @media (max-width: 575px) {
       .u-section-3 .u-text-2,
       .u-section-3 .u-text-4,
@@ -116,58 +126,134 @@
       .u-section-3 .u-text-10 {
         padding-left: 62px !important;
       }
-      
-.u-header .u-sidenav-1,
-.u-sidenav-1 {
-  width: 100vw !important;
-  max-width: 100vw !important;
-  min-width: 0 !important;
-}
- 
-@media (max-width: 575px) {
- 
-  /* Centraliza horizontalmente */
-  .u-header .u-nav-2 {
-    width: 100% !important;
-    margin-left: 0 !important;
-    text-align: center !important;
-  }
- 
-  /* Centraliza verticalmente — faz o container interno ocupar tela toda e centraliza */
-  .u-header .u-sidenav-overflow {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    height: 100vh !important;
-    height: 100dvh !important;
-  }
- 
-  /* Zera margem top que empurra a lista para baixo */
-  .u-header .u-nav-2 {
-    margin-top: 0 !important;
-  }
- 
-  /* Botão X centralizado */
-.u-header .u-menu-close-1 {
-  margin-left: auto !important;
-  margin-right: auto !important;
-  position: relative !important;
-  top: -40px !important;
-}
-}
-    
-  </style>
 
-  <script>
-    window.recaptchaRenderedV2=false; window.recaptchaFallback=false; window.recaptchaSiteKeyV2='6LebRIorAAAAAEBCYCVXLpZKNt1KxwfbefWqDvFL';
-    function gdprConfirmed(){return true;}
-    function dynamicLoadScript(){var s=document.createElement('script');s.src='https://www.google.com/recaptcha/api.js?render=6Lc2HDEiAAAAALpe1yqNarK-BmlyYl_MNPZx7_AB';s.async=true;s.onload=function(){document.dispatchEvent(new CustomEvent("recaptchaLoaded"));};document.body.appendChild(s);}
-    function showRecaptchaError(e){e=e||'';var f=document.querySelector('.u-form-send-error');if(f){f.innerText='Erro do Proprietário do Site: '+e.replace(/:[\s\S]*/,'');f.style.display='block';}console.error('Error in grecaptcha: ',e);}
-    document.addEventListener('DOMContentLoaded',function(){if(gdprConfirmed())dynamicLoadScript();});
-    document.addEventListener("recaptchaLoaded",function(){if(!gdprConfirmed())return;(function(g,sk,a){var r={execute:function(action,cb){if(typeof g==='undefined'||typeof g.execute!=='function'){showRecaptchaError('reCAPTCHA script failed to load.');return;}try{g.execute(sk,{action:action}).then(function(t){if(!t)throw new Error('Empty token');var fs=document.getElementsByTagName('form');for(var i=0;i<fs.length;i++){var rr=fs[i].querySelector('[name="recaptchaResponse"]');if(!rr){rr=document.createElement('input');rr.setAttribute('type','hidden');rr.setAttribute('name','recaptchaResponse');fs[i].appendChild(rr);}rr.value=t;}cb();}).catch(function(e){showRecaptchaError(e.message);});}catch(e){showRecaptchaError(e.message);}},executeContact:function(cb){r.execute(a['contact'],cb);}};window.recaptchaObject=r;window.grecaptchaObject=g;})(grecaptcha,'6Lc2HDEiAAAAALpe1yqNarK-BmlyYl_MNPZx7_AB',{contact:'contact'});});
-    window.showRecaptchaV2=function(form){if(!form||!form.length)return;if(typeof window.grecaptchaObject==='undefined'||!window.grecaptchaObject)return;var fEl=form[0];var c=document.getElementById('recaptcha-v2-container');if(!c){c=document.createElement('div');c.id='recaptcha-v2-container';fEl.parentElement.appendChild(c);}var tr=false,th;if(window.recaptchaRenderedV2===false||typeof window.recaptchaRenderedV2==='undefined'){window.recaptchaRenderedV2=window.grecaptchaObject.render('recaptcha-v2-container',{sitekey:window.recaptchaSiteKeyV2,size:'invisible',callback:function(t){clearTimeout(th);if(!t){showRecaptchaError('reCAPTCHA v2 token was empty.');return;}tr=true;var rv=fEl.querySelector('input[name="recaptchaResponseV2"]');if(!rv){rv=document.createElement('input');rv.type='hidden';rv.name='recaptchaResponseV2';fEl.appendChild(rv);}rv.value=t;if(window.recaptchaSiteKeyV2){var sk=fEl.querySelector('input[name="siteKey"]');if(sk)sk.value=window.recaptchaSiteKeyV2;}document.querySelectorAll('.u-form-send-error').forEach(function(el){el.style.display='none';});fEl.dispatchEvent(new CustomEvent('submit',{detail:{recaptchaPassed:true},bubbles:true,cancelable:true}));},'error-callback':function(){clearTimeout(th);showRecaptchaError('reCAPTCHA v2 error.');},'expired-callback':function(){clearTimeout(th);}});window.grecaptchaObject.reset(window.recaptchaRenderedV2);setTimeout(function(){window.grecaptchaObject.execute(window.recaptchaRenderedV2);},300);th=setTimeout(function(){if(!tr)showRecaptchaError('reCAPTCHA v3 detected unusual activity.');},120000);}else{window.grecaptchaObject.reset(window.recaptchaRenderedV2);setTimeout(function(){window.grecaptchaObject.execute(window.recaptchaRenderedV2);},300);}};
-  </script>
+      .u-header .u-sidenav-1,
+      .u-sidenav-1 {
+        width: 100vw !important;
+        max-width: 100vw !important;
+        min-width: 0 !important;
+      }
+
+      /* Centraliza horizontalmente */
+      .u-header .u-nav-2 {
+        width: 100% !important;
+        margin-left: 0 !important;
+        margin-top: 0 !important;
+        text-align: center !important;
+      }
+
+      /* Centraliza verticalmente */
+      .u-header .u-sidenav-overflow {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        height: 100vh !important;
+        height: 100dvh !important;
+      }
+
+      /* Botão X centralizado */
+      .u-header .u-menu-close-1 {
+        margin-left: auto !important;
+        margin-right: auto !important;
+        position: relative !important;
+        top: -40px !important;
+      }
+    }
+
+    /* ================================================
+       SEÇÃO DE CONTATO — tudo centralizado
+       ================================================ */
+    #contato.u-section-9 { min-height: 0 !important; height: auto !important; }
+
+    #contato .u-sheet-1 {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: flex-start !important;
+      height: auto !important;
+      min-height: 0 !important;
+      max-width: 900px !important;
+      padding: 70px 20px 40px !important;
+      box-sizing: border-box !important;
+    }
+
+    #contato .u-sheet-1 > *,
+    #contato .contato-rodape > *,
+    #contato .contato-icones > * {
+      position: static !important;
+      float: none !important;
+    }
+
+    #contato .u-text-1 {
+      margin: 0 0 50px 0 !important;
+      width: auto !important;
+      text-align: center !important;
+    }
+
+    #contato .u-text-2 {
+      margin: 0 0 30px 0 !important;
+      padding: 0 !important;
+      width: 100% !important;
+      text-align: center !important;
+    }
+
+    #contato .contato-icones {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+      margin: 0;
+    }
+    #contato .contato-icones img {
+      width: 44px !important;
+      height: 44px !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      object-fit: contain;
+    }
+
+    #contato .contato-linha {
+      width: 100%;
+      max-width: 700px;
+      height: 0;
+      border-top: 1px solid #222;
+      margin: 60px 0 30px 0;
+    }
+
+    #contato .contato-rodape {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      max-width: 700px;
+      gap: 16px;
+    }
+    #contato .contato-rodape .u-image-6 {
+      width: 155px !important;
+      height: auto !important;
+      margin: 0 !important;
+    }
+    #contato .contato-rodape .u-text-3 {
+      margin: 0 !important;
+      width: auto !important;
+      text-align: right !important;
+    }
+
+    #contato .u-text-4 {
+      margin: 30px 0 0 0 !important;
+      width: auto !important;
+      text-align: center !important;
+    }
+
+    @media (max-width: 575px) {
+      #contato .u-sheet-1 { padding: 50px 15px 30px !important; }
+      #contato .u-text-1 { margin-bottom: 35px !important; }
+      #contato .contato-rodape { flex-direction: column; justify-content: center; }
+      #contato .contato-rodape .u-text-3 { text-align: center !important; }
+    }
+  </style>
 </head>
 
 <body data-home-page="TACCONE®.html" data-home-page-title="TACCONE®" data-path-to-root="/" data-include-products="false" class="u-body u-clearfix u-overlap u-xl-mode" data-lang="pt">
@@ -297,60 +383,29 @@
       <h1 class="u-align-center u-custom-font u-text u-text-custom-color-7 u-text-1">
         <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-custom-color-7 u-btn-1" href="https://wa.me/5521966449984" target="_blank">[ FALE CONOSCO ]</a>
       </h1>
-      <div class="u-align-center u-form u-form-1">
-        <form id="form-contato" action="contato.php" method="POST" class="u-clearfix u-form-spacing-5 u-form-vertical u-inner-form">
-          <div class="u-form-group u-form-name u-label-none">
-            <input type="text" placeholder="Seu nome" id="name-6c84" name="name" class="u-border-grey-80 u-custom-color-12 u-custom-font u-input u-input-rectangle u-text-grey-25 u-input-1" required>
-          </div>
-          <div class="u-form-group u-form-phone u-label-none u-form-group-2">
-            <input type="tel" placeholder="Telefone" id="text-1a23" name="text" class="u-border-grey-80 u-custom-color-12 u-custom-font u-input u-input-rectangle u-text-grey-25 u-input-2" data-country-code="br">
-          </div>
-          <div class="u-form-email u-form-group u-label-none">
-            <input type="email" placeholder="E-mail" id="email-6c84" name="email" class="u-border-grey-80 u-custom-color-12 u-custom-font u-input u-input-rectangle u-text-grey-25 u-input-3">
-          </div>
-          <div class="u-form-group u-form-message u-label-none">
-            <textarea placeholder="Mensagem" rows="3" id="message-6c84" name="message" class="u-border-grey-80 u-custom-color-12 u-custom-font u-input u-input-rectangle u-text-grey-25 u-input-4" required maxlength="500"></textarea>
-          </div>
-          <div class="u-align-right u-form-group u-form-submit u-label-none">
-            <button id="btn-submit" type="submit" class="u-btn u-button-style u-custom-color-6 u-custom-font u-text-custom-color-7 u-btn-2" style="width:100%;border:none;cursor:pointer;">ENVIAR</button>
-          </div>
-          <div class="u-form-send-message u-form-send-success">Mensagem enviada.</div>
-          <div class="u-form-send-error u-form-send-message">Erro ao enviar. Tente novamente.</div>
-          <input type="hidden" name="formServices" value="3d2f6646-e247-93ee-c14a-a95c8903825b">
-          <input type="hidden" name="siteKey" value="6Lc2HDEiAAAAALpe1yqNarK-BmlyYl_MNPZx7_AB">
-          <input type="hidden" id="siteId" name="siteId" value="6636604">
-          <input type="hidden" id="pageId" name="pageId" value="11153395">
-        </form>
-      </div>
-      <script>
-        var form=document.getElementById('form-contato');
-        var btn=document.getElementById('btn-submit');
-        form.onsubmit=function(){
-          btn.innerHTML='AGUARDE';btn.disabled=true;btn.style.opacity='0.7';
-          var check=setInterval(function(){
-            var s=document.querySelector('.u-form-send-success');
-            if(s&&window.getComputedStyle(s).display!=='none'){
-              btn.innerHTML='ENVIADO';btn.style.backgroundColor='#28a745';btn.style.opacity='1';
-              clearInterval(check);
-              setTimeout(function(){btn.innerHTML='ENVIAR';btn.disabled=false;btn.style.backgroundColor='';s.style.display='none';},3000);
-            }
-          },500);
-        };
-      </script>
-      <h1 class="u-align-left u-custom-font u-text u-text-color-var u-text-2" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="0" data-animation-out="0">
+
+      <h1 class="u-align-center u-custom-font u-text u-text-color-var u-text-2" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="0" data-animation-out="0">
         <a href="https://wa.me/5521966449984" target="_blank" style="color:inherit;">WHATSAPP: 21 9 6644-9984</a><br>
         <a href="mailto:atendimento@taccone.com.br" target="_blank" style="color:inherit;">ATENDIMENTO@TACCONE.COM.BR</a><br>
         <br><br>SEGUNDA A SEXTA DE 10H AS 20H<br><br>
         RUA ENGENHEIRO ENALDO CRAVO PEIXOTO<br>CORPORATE TIJUCA • 105
       </h1>
-      <img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-1" src="insta.png"    alt="" data-animation-name="fadeIn" data-animation-duration="2000" data-animation-delay="500"  data-animation-out="0" onclick="window.open('https://www.instagram.com/agenciataccone','_blank')" style="cursor:pointer;">
-      <img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-3" src="facebook.png" alt="" data-animation-name="fadeIn" data-animation-duration="2000" data-animation-delay="1000" data-animation-out="0" onclick="window.open('https://www.facebook.com/agenciataccone','_blank')" style="cursor:pointer;">
-      <img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-2" src="email.png"    alt="" data-animation-name="fadeIn" data-animation-duration="2000" data-animation-delay="2000" data-animation-out="0" onclick="window.open('mailto:atendimento@taccone.com.br?subject=Quero%20contratar%20a%20TACCONE%C2%AE','_blank')" style="cursor:pointer;">
-      <img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-4" src="x.png"        alt="" data-animation-name="fadeIn" data-animation-duration="2000" data-animation-delay="1500" data-animation-out="0" onclick="window.open('https://x.com/agenciataccone','_blank')" style="cursor:pointer;">
-      <img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-5" src="whatsapp.png" alt="" data-animation-name="fadeIn" data-animation-duration="2000" data-animation-delay="0"    data-animation-out="0" onclick="window.open('https://wa.me/5521966449984','_blank')" style="cursor:pointer;">
-      <div class="u-align-center u-border-1 u-border-grey-80 u-expanded-width-xs u-shape u-shape-bottom u-shape-left u-shape-line u-shape-right u-shape-1"></div>
-      <h1 class="u-align-right u-custom-font u-text u-text-color-var u-text-3">© TACCONE. TODOS OS DIREITOS RESERVADOS.</h1>
-      <img class="u-image u-image-default u-preserve-proportions u-image-6" src="logotipo.svg" alt="" data-image-width="99" data-image-height="23">
+
+      <div class="contato-icones">
+        <img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-5" src="whatsapp.png" alt="WhatsApp" data-animation-name="fadeIn" data-animation-duration="2000" data-animation-delay="0"    data-animation-out="0" onclick="window.open('https://wa.me/5521966449984','_blank')" style="cursor:pointer;">
+        <img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-1" src="insta.png"    alt="Instagram" data-animation-name="fadeIn" data-animation-duration="2000" data-animation-delay="500"  data-animation-out="0" onclick="window.open('https://www.instagram.com/agenciataccone','_blank')" style="cursor:pointer;">
+        <img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-3" src="facebook.png" alt="Facebook" data-animation-name="fadeIn" data-animation-duration="2000" data-animation-delay="1000" data-animation-out="0" onclick="window.open('https://www.facebook.com/agenciataccone','_blank')" style="cursor:pointer;">
+        <img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-4" src="x.png"        alt="X" data-animation-name="fadeIn" data-animation-duration="2000" data-animation-delay="1500" data-animation-out="0" onclick="window.open('https://x.com/agenciataccone','_blank')" style="cursor:pointer;">
+        <img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-2" src="email.png"    alt="E-mail" data-animation-name="fadeIn" data-animation-duration="2000" data-animation-delay="2000" data-animation-out="0" onclick="window.open('mailto:atendimento@taccone.com.br?subject=Quero%20contratar%20a%20TACCONE%C2%AE','_blank')" style="cursor:pointer;">
+      </div>
+
+      <div class="contato-linha"></div>
+
+      <div class="contato-rodape">
+        <img class="u-image u-image-default u-preserve-proportions u-image-6" src="logotipo.svg" alt="TACCONE" data-image-width="99" data-image-height="23">
+        <h1 class="u-align-right u-custom-font u-text u-text-color-var u-text-3">© TACCONE. TODOS OS DIREITOS RESERVADOS.</h1>
+      </div>
+
       <p class="u-align-center u-text u-text-4">
         <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-custom-font u-hover-none u-none u-text-custom-color-9 u-btn-3" href="index.html#home">︿</a>
       </p>
@@ -368,7 +423,7 @@
     var _fetch=window.fetch;
     window.fetch=function(url,opts){if(typeof url==='string'&&url.indexOf('nicepagesrv')!==-1)return Promise.reject('blocked');return _fetch(url,opts);};
     var _xhr=XMLHttpRequest.prototype.open;
-    XMLHttpRequest.prototype.open=function(method,url){if(url&&url.indexOf('nicepagesrv')!==-1)url='contato.php';return _xhr.apply(this,arguments);};
+    XMLHttpRequest.prototype.open=function(method,url){if(url&&url.indexOf('nicepagesrv')!==-1)url='about:blank';return _xhr.apply(this,arguments);};
   </script>
 
   <script>
@@ -403,10 +458,7 @@
       if (menuClose) menuClose.addEventListener('click', closeMenu);
       if (overlay)   overlay.addEventListener('click', closeMenu);
 
-      // ================================================
-      // CORREÇÃO: só fecha o menu em links que NÃO
-      // abrem nova aba (target="_blank")
-      // ================================================
+      // Só fecha o menu em links que NÃO abrem nova aba (target="_blank")
       document.querySelectorAll('.u-nav-2 .u-nav-link').forEach(function(link) {
         if (link.getAttribute('target') !== '_blank') {
           link.addEventListener('click', closeMenu);
